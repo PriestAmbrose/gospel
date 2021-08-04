@@ -24,7 +24,7 @@ article_dict1,year_dict1=read_hip.add_month_services(year=2020)#should be 99 art
 #this return tuple of article, year dictionary 
 #for today year
 
-spec_days.correct_specday_dates(article_dict1, year_dict1,year=2020)
+spec_days.correct_specday_dates(article_dict1, year_dict1,year=2021)
 #datetime.datetime.today().year)
 
 '''for key in article_dict1:
@@ -44,12 +44,12 @@ d=collections.OrderedDict(sorted(article_dict1.items(),
     #key=lambda x:peri_sort(x[0])
     ))
 
-f=open("3.hip","w")
+f=open("3.hip","w", encoding="utf8")
 for k,v in d.items():
     if len(v)==1:
         print(k,len(v),v,"\n\n",file=f)
 f.close()
-print(len(d.items()))
+print(d)
 
 '''unique_articles={k:v for k,v in d.items() if len(v)==1}
 for key in unique_articles:

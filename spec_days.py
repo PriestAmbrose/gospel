@@ -43,7 +43,7 @@ def correct_specday_dates(article_dict,year_dict={},
     #print(article_dict["матfе'а д~"])
     article_dict["матfе'а д~"].insert(0,article_dict["матfе'а д~"].pop())
     #print(article_dict["матfе'а д~"])
-    with open(file_name) as f:
+    with open(file_name, encoding="utf8") as f:
         for line in re.split('\n\n%<',f.read()):
             spec_day_info=line.split(" day ")
             feast=datetime.date(year, *map(int,spec_day_info[0].split())) #old calendar dates
