@@ -21,14 +21,14 @@ def peri_sort(key):
 #readings change for Exaltation of the Cross and Epiphany
 #also it have problems for Meatfare readings
 
-article_dict1,year_dict1=read_hip.add_month_services()
+article_dict1,year_dict1=read_hip.add_month_services(year=2021)
 
 #article_dict2=read_hip.add_general_services() #used to give 62 articles
 #TODO the resultive year does not include special days from previous and next year
 #this return tuple of article, year dictionary 
 #for today year
 
-spec_days.correct_specday_dates(article_dict1, year_dict1)
+spec_days.correct_specday_dates(article_dict1, year_dict1, year=2021)
 #datetime.datetime.today().year)
 
 '''for key in article_dict1:
@@ -53,7 +53,8 @@ for k,v in d.items():
     if len(v)==1:
         print(k,len(v),v,"\n\n",file=f)
 f.close()
-print(d)
+#print(d)
+print(article_dict1["матfе'а д~"])
 
 '''unique_articles={k:v for k,v in d.items() if len(v)==1}
 for key in unique_articles:
