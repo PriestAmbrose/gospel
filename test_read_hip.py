@@ -14,6 +14,10 @@ def test_is_pericope():
     assert re.search(read_hip.is_pericope, "i=wа'нна _кс~_е")
     assert re.search(read_hip.is_pericope, "луки` р~и w\т полу`")
 
+    #it should be able to process strange pericope formats
+    assert re.search(read_hip.is_pericope, "луки` ми` w\т полу`")
+    assert re.search(read_hip.is_pericope, "ма'рка _е=")
+
 
 
 
