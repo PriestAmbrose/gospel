@@ -33,7 +33,7 @@ def iterate_year(year):
         yield current_date
 #FIXME that algorithm doesn't take into account 
 #readings change for Exaltation of the Cross and Epiphany
-#also it have problems for Carnival readings
+#also it have problems for Meatfare readings
 
 def add_daily_readings(article_dict={},year_dict={},
                         file_name="5skazan.hip",

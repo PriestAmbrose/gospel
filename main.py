@@ -4,8 +4,11 @@ import read_hip
 import spec_days
 
 def peri_sort(key):
+    '''this function takes pericope description
+     and converts it to a unique number which can be later used for sorting'''
     gospels={"матfе'а":0,"ма'рка":200,"луки`":400,"i=wа'нна":600}
     slav_numbers={"р":100,"i":10,"к":20,"л":30,"м":40,"н":50,"о":70,"п":80,"с":40,"ч":90,
+    #60 is кс, so it is 20 (к) +40 (с)
     "а":1,"в":2,"г":3,"д":4,"е":5,"s":6,"з":7,"и":8,"f":9}
     result=gospels[key.split()[0]]
     for letter in key.split()[1]:
@@ -14,10 +17,11 @@ def peri_sort(key):
 
 
 #article_dict,year_dict=read_hip.add_daily_readings(year==datetime.date.today().year)
-article_dict1,year_dict1=read_hip.add_month_services(year=datetime.date.today().year)#should be 99 articles
 #FIXME that algorithm doesn't take into account 
 #readings change for Exaltation of the Cross and Epiphany
 #also it have problems for Meatfare readings
+
+article_dict1,year_dict1=read_hip.add_month_services(year=datetime.date.today().year)#should be 99 articles
 
 #article_dict2=read_hip.add_general_services() #used to give 62 articles
 #TODO the resultive year does not include special days from previous and next year
