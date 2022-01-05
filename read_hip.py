@@ -114,7 +114,7 @@ def add_month_services(article_dict={},year_dict={},
         if re.search(is_pericope,corr_article):
             corr_article=re.sub(is_pericope,r"\1\2~\3",corr_article) #remove `= and leave only ~
             corr_article=date_key.strftime("%Y %m %d ")+corr_article 
-            #in the year table we keep it in old style
+            #in the article table we keep it in old style
             date_key+=datetime.timedelta(NEW_OLD_DIFF) #in the year table we keep it in new style
             year_dict[date_key]=year_dict.get(date_key,[])+[corr_article]
             #each gospel reading contains list of saints(articles about each saint)

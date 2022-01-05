@@ -21,7 +21,7 @@ def peri_sort(key):
 #readings change for Exaltation of the Cross and Epiphany
 #also it have problems for Meatfare readings
 
-article_dict1,year_dict1=read_hip.add_month_services(year=datetime.date.today().year)#should be 99 articles
+article_dict1,year_dict1=read_hip.add_month_services(year=datetime.date.today().year)
 
 #article_dict2=read_hip.add_general_services() #used to give 62 articles
 #TODO the resultive year does not include special days from previous and next year

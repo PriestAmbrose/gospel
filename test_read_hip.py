@@ -18,10 +18,7 @@ def test_is_pericope():
     assert re.search(read_hip.is_pericope, "луки` ми` w\т полу`")
     assert re.search(read_hip.is_pericope, "ма'рка _е=")
 
-
-
-
-
-
-
-
+def test_add_month_services():
+    article_dict, year_dict = read_hip.add_month_services()
+    assert len(article_dict)==99
+    #?assert len(year_dict)==194
