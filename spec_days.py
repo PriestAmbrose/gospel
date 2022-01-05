@@ -21,7 +21,7 @@ def get_delta(feast,day):
         return (abs(day)-feast)%week
     
     
-def correct_specday_dates(article_dict,year_dict={},
+def correct_specday_dates(article_dict={},year_dict={},
                         file_name="special_days.hip", year=datetime.date.today().year):
     ''' This function corrects in the dictionary of articles dates for special 
     Saturdays and Sundays before and after feastday (there are 13 special days)
@@ -41,7 +41,11 @@ def correct_specday_dates(article_dict,year_dict={},
     # это всегда оказывается так, кроме зачала Мф. 4, которое для Недели по Рождестве
     # оказывается на последнем месте
     #print(article_dict["матfе'а д~"])
-    article_dict["матfе'а д~"].insert(0,article_dict["матfе'а д~"].pop())
+    try:
+        article_dict["матfе'а д~"].insert(0,article_dict["матfе'а д~"].pop())
+    except:
+        raise SystemExit("function correcting special days cannot see it")
+
     #print(article_dict["матfе'а д~"])
     with open(file_name, encoding="utf8") as f:
         for line in re.split('\n\n%<',f.read()):
@@ -53,7 +57,10 @@ def correct_specday_dates(article_dict,year_dict={},
             corr_article=(spec_date-datetime.timedelta(read_hip.NEW_OLD_DIFF)).strftime("%Y %m %d")
             key=re.search(read_hip.is_pericope,line).group(0)
             # !!! Внимание. Все специальные дни в словаре должны теперь оказаться на первом месте в списке
-            corr_article+=article_dict[key][0][10:] #10 characters take month-day pair 
+            try:
+                corr_article+=article_dict[key][0][10:] #10 characters take month-day pair 
+            except:
+                raise SystemExit("function correcting special days cannot see it")
             '''print(feast,feast.strftime("Feast(NC) %Y %m %d %A\n"))
             print(spec_date.strftime("SPEC DATE(OC) %Y %m %d\n\n"))'''
             
