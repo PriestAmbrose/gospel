@@ -13,18 +13,18 @@ def peri_sort(key):
     return result
 
 
-#article_dict,year_dict=read_hip.add_daily_readings(year=2020)
-article_dict1,year_dict1=read_hip.add_month_services(year=2020)#should be 99 articles
+#article_dict,year_dict=read_hip.add_daily_readings(year==datetime.date.today().year)
+article_dict1,year_dict1=read_hip.add_month_services(year=datetime.date.today().year)#should be 99 articles
 #FIXME that algorithm doesn't take into account 
 #readings change for Exaltation of the Cross and Epiphany
-#also it have problems for Carnival readings
+#also it have problems for Meatfare readings
 
 #article_dict2=read_hip.add_general_services() #used to give 62 articles
 #TODO the resultive year does not include special days from previous and next year
 #this return tuple of article, year dictionary 
 #for today year
 
-spec_days.correct_specday_dates(article_dict1, year_dict1,year=2021)
+spec_days.correct_specday_dates(article_dict1, year_dict1,year=datetime.date.today().year)
 #datetime.datetime.today().year)
 
 '''for key in article_dict1:

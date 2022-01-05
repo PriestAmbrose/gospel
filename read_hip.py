@@ -67,13 +67,13 @@ def add_daily_readings(article_dict={},year_dict={},
     return article_dict,year_dict                    
                         
 
-def print_date():
+def print_date(year=datetime.date.today().year):
     ''' Возвращает в виде строки пару "месяц число" для статей месяцеслова, чтобы вписывать их 
     в соответствующую строку в начале. '''
     
     yield 1,30 # пропускаем начальные строки, туда дату ставим любую
     for month in [9,10,11,12,1,2,3,4,5,6,7,8]:
-        for day in range(1,calendar.monthrange(2020,month)[1]+1):# так как месяцеслов високосный, 
+        for day in range(1,calendar.monthrange(year,month)[1]+1):# так как месяцеслов високосный, 
         #то и год year должен быть любой високосный
             yield month,day                        
                         
