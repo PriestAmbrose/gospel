@@ -35,7 +35,7 @@ def iterate_year(year):
 #readings change for Exaltation of the Cross and Epiphany
 #also it have problems for Meatfare readings
 
-def add_daily_readings(article_dict={},year_dict={},
+def add_daily_readings(article_dict=None,year_dict=None,
                         file_name="5skazan.hip",
                         year=datetime.date.today().year):
     '''This function readings changeable daily readings from the file file_name
@@ -43,6 +43,13 @@ def add_daily_readings(article_dict={},year_dict={},
     and year_dict (where key= date, value = article) and returns resulting dictionaries
     article_dict and year_dict'''
     
+
+    if article_dict is None:
+        article_dict={}
+
+    if year_dict is None:
+        year_dict={}
+
     with open(file_name, encoding="utf8") as file:
         list_of_weeks=re.split('\n\n%<',file.read())
         get_date=iterate_year(year)
@@ -77,7 +84,7 @@ def print_date(year=datetime.date.today().year):
         #то и год year должен быть любой високосный
             yield month,day                        
                         
-def add_month_services(article_dict={},year_dict={},
+def add_month_services(article_dict=None,year_dict=None,
                         file_name="6sobornik.hip",
                         year=datetime.date.today().year):
     
@@ -95,6 +102,12 @@ def add_month_services(article_dict={},year_dict={},
     The articles in the file  are themselves separated in 
     the file with \n\n and a Church-slavonic number" '''
     
+    if article_dict is None:
+        article_dict={}
+
+    if year_dict is None:
+        year_dict={}
+
     with open(file_name, encoding="utf8") as file:
         list_of_articles=re.split('\n\n..?~.?.? ',file.read()) #splitting into articles
         #which start with \n\n and a Church-slavonic number making a simple list of them
@@ -128,10 +141,13 @@ def add_month_services(article_dict={},year_dict={},
     
     
     
-def add_general_services(article_dict={}, file_name="7obtreb.hip"):
+def add_general_services(article_dict=None, file_name="7obtreb.hip"):
     ''' добавляет к словарю статей из месяцеслова article_dict также статьи
     из раздела общей службы святым из файла filename'''
     
+    if article_dict is None:
+        article_dict={}
+
     with open(file_name, encoding="utf8") as file:
         list_of_articles=re.split('\n\n%<',file.read())
     for article in list_of_articles:

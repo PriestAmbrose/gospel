@@ -21,7 +21,7 @@ def get_delta(feast,day):
         return (abs(day)-feast)%week
     
     
-def correct_specday_dates(article_dict={},year_dict={},
+def correct_specday_dates(article_dict=None,year_dict=None,
                         file_name="special_days.hip", year=datetime.date.today().year):
     ''' This function corrects in the dictionary of articles dates for special 
     Saturdays and Sundays before and after feastday (there are 13 special days)
@@ -41,6 +41,12 @@ def correct_specday_dates(article_dict={},year_dict={},
     # это всегда оказывается так, кроме зачала Мф. 4, которое для Недели по Рождестве
     # оказывается на последнем месте
     #print(article_dict["матfе'а д~"])
+    if article_dict is None:
+        article_dict={}
+
+    if year_dict is None:
+        year_dict={}
+        
     try:
         article_dict["матfе'а д~"].insert(0,article_dict["матfе'а д~"].pop())
     except:
