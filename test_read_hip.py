@@ -1,4 +1,6 @@
 import re
+import datetime
+
 import read_hip
 
 def test_is_pericope():
@@ -19,6 +21,8 @@ def test_is_pericope():
     assert re.search(read_hip.is_pericope, "ма'рка _е=")
 
 def test_add_month_services():
-    article_dict, year_dict = read_hip.add_month_services()
+    article_dict, year_dict = read_hip.add_month_services(year=2022)
+
     assert len(article_dict)==99
-    #?assert len(year_dict)==194
+    
+
