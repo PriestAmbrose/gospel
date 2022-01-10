@@ -31,9 +31,9 @@ def test_correct_specday_dates():
    
     article_dict1,year_dict1=read_hip.add_month_services(year=2019)
     spec_days.correct_specday_dates(article_dict1, year_dict1, year=2019)
-    assert datetime.date(2018,12,30) in year_dict1 #Saturday before Theophany
     f = open("outputtest","w",encoding="utf8")
     print(year_dict1,file=f)
     f.close()
-
+    assert datetime.date(2018,12,30) in year_dict1 #Saturday before Theophany
+    
 
