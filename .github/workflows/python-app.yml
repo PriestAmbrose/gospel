@@ -22,7 +22,7 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        sudo apt-get install python-pip
+        sudo apt-get install python3-pip
         sudo pip install python-dateutil
         python -m pip install --upgrade pip
         pip install flake8 pytest
