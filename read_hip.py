@@ -8,7 +8,7 @@ Perhaps it should be better called read_unch '''
 import re
 import calendar
 import datetime
-import dateutil
+import dateutil.easter
 
 NEW_OLD_DIFF=13 #the difference between old and new calendar
 
@@ -16,11 +16,11 @@ is_pericope=r"(матfе'а|ма'рка|луки`|i=wа'нна)( [рiклмно�
 r"([_авгдеsзиfi]{,2}( w\\т полу`)?)"
 
 
-def iterate_year(year):
+def iterate_year(year=datetime.date.today().year):
     '''This function shoud give the correct date while walking through the calendar 
     of changeable daily readings in the Gospel for particular year. The construction of this function
-    is strongly dependent on the structer of the document where the calendar is'''
-    current_date=dateutil.easter(year, dateutil.EASTER_ORTHODOX)
+    is strongly dependent on the structure of the document where the calendar is'''
+    current_date=dateutil.easter.easter(year, dateutil.easter.EASTER_ORTHODOX)
     day_after_Easter=0
     yield current_date #for Easter itself
     yield current_date #for Easter evening
@@ -156,6 +156,7 @@ def add_general_services(article_dict=None, file_name="7obtreb.hip"):
         corr_article=re.sub(is_pericope,r"\1\2~\3",corr_article) #remove `= and leave only ~
         for pericope in re.finditer(is_pericope,corr_article):
             #if not article_dict.get(pericope.group(0)): #добавляем общее святым только если нет других
+            #this comment depends on the algorithmic decision
                 article_dict[pericope.group(0)]=article_dict.get(pericope.group(0),[])+[corr_article]
         
     #добавить в словарь зачала, указанные с помощью "или" в файле общих служб святым #FIXME hardcode

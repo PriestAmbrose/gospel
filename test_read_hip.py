@@ -1,5 +1,6 @@
 import re
 import datetime
+import dateutil.easter
 
 import read_hip
 
@@ -24,5 +25,17 @@ def test_add_month_services():
     article_dict, year_dict = read_hip.add_month_services(year=2022)
 
     assert len(article_dict)==99
+
+
+def test_iterate_year():
+    year = 2021
+    
+    easter = dateutil.easter.easter(year, dateutil.easter.EASTER_ORTHODOX)
+
+    get_date=read_hip.iterate_year(year)
+    current_date=next(get_date)
+    assert current_date == easter
+    for i in range (1):
+        current_date=next(get_date)
     
 
