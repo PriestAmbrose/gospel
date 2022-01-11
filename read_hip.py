@@ -8,7 +8,7 @@ Perhaps it should be better called read_unch '''
 import re
 import calendar
 import datetime
-from dateutil import easter
+import dateutil
 
 NEW_OLD_DIFF=13 #the difference between old and new calendar
 
@@ -20,7 +20,7 @@ def iterate_year(year):
     '''This function shoud give the correct date while walking through the calendar 
     of changeable daily readings in the Gospel for particular year. The construction of this function
     is strongly dependent on the structer of the document where the calendar is'''
-    current_date=easter.easter(year,easter.EASTER_ORTHODOX)
+    current_date=dateutil.easter(year, dateutil.EASTER_ORTHODOX)
     day_after_Easter=0
     yield current_date #for Easter itself
     yield current_date #for Easter evening
