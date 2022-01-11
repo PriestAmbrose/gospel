@@ -34,6 +34,6 @@ def test_correct_specday_dates():
     f = open("outputtest","w",encoding="utf8")
     print(year_dict1,file=f)
     f.close()
-    assert datetime.date(2018,12,30) in year_dict1 #Saturday before Theophany
+    assert year_dict1[datetime.date(2019, 1, 12)][0][:10] == "2018 12 30" #Saturday before Theophany
     
 
