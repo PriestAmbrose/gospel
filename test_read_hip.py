@@ -46,8 +46,12 @@ def test_iterate_year():
     current_date = next(get_date)
     assert current_date == datetime.date(2021,6,19) #this day should have two readings
 
+    for i in range(8*17+3): #check Monday of the 18th week
+        current_date=next(get_date)
+    assert current_date == datetime.date(2021,10,4)#that should be start of reading gospel from Luke
 
 
+#test_iterate_year()
     
 
 

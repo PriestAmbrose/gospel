@@ -24,14 +24,13 @@ def iterate_year(year=datetime.date.today().year):
     day_after_Easter=0
     while True:
         yield current_date 
-        if day_after_Easter//7==0: #every Sunday they give two readings
-            yield current_date
-            
-        day_after_Easter+=1
-        current_date+=datetime.timedelta(1)
+        if day_after_Easter%7==0: #every Sunday they give two readings
+            yield current_date    
         if day_after_Easter//7==6 and day_after_Easter%7==6:
             #the Saturday before Pentecost has extra reading
             yield current_date
+        day_after_Easter+=1
+        current_date+=datetime.timedelta(1)
 
 #FIXME that algorithm doesn't take into account 
 #readings change for Exaltation of the Cross and Epiphany
