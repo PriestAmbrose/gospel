@@ -28,7 +28,7 @@ def iterate_year(year=datetime.date.today().year):
         day_after_Easter+=1
         current_date+=datetime.timedelta(1)
         if day_after_Easter//7==6 and day_after_Easter%7==6:
-            #the Saturday after Pentecost has extra reading
+            #the Saturday before Pentecost has extra reading
             yield current_date
         yield current_date
 #FIXME that algorithm doesn't take into account 

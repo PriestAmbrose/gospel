@@ -1,5 +1,6 @@
 import re
 import datetime
+from threading import currentThread
 import dateutil.easter
 
 import read_hip
@@ -29,13 +30,26 @@ def test_add_month_services():
 
 def test_iterate_year():
     year = 2021
-    
-    easter = dateutil.easter.easter(year, dateutil.easter.EASTER_ORTHODOX)
+    easter = datetime.date(2021,5,2)
 
     get_date=read_hip.iterate_year(year)
     current_date=next(get_date)
-    assert current_date == easter
-    for i in range (1):
+    assert current_date == easter #make sure that it starts from Easter
+    
+    current_date=next(get_date)
+    assert current_date == easter #make sure about Easter evening
+
+    for i in range(48): #going to the Saturday before Pentecost
         current_date=next(get_date)
+    assert current_date == datetime.date(2021,6,19)
+
+    current_date = next(get_date)
+    assert current_date == datetime.date(2021,6,19) #this day should have two readings
+
+    
+
+    
+
+
     
 
