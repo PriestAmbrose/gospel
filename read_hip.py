@@ -22,15 +22,17 @@ def iterate_year(year=datetime.date.today().year):
     is strongly dependent on the structure of the document where the calendar is'''
     current_date=dateutil.easter.easter(year, dateutil.easter.EASTER_ORTHODOX)
     day_after_Easter=0
-    yield current_date #for Easter itself
-    yield current_date #for Easter evening
     while True:
+        yield current_date 
+        if day_after_Easter//7==0: #every Sunday they give two readings
+            yield current_date
+            
         day_after_Easter+=1
         current_date+=datetime.timedelta(1)
         if day_after_Easter//7==6 and day_after_Easter%7==6:
             #the Saturday before Pentecost has extra reading
             yield current_date
-        yield current_date
+
 #FIXME that algorithm doesn't take into account 
 #readings change for Exaltation of the Cross and Epiphany
 #also it have problems for Meatfare readings
@@ -65,9 +67,6 @@ def add_daily_readings(article_dict=None,year_dict=None,
             if re.search(is_pericope,corr_article):
                 corr_article=re.sub(is_pericope,r"\1\2~\3",corr_article) #remove `= and leave only ~
                 year_dict[current_date]=year_dict.get(current_date,[])+[corr_article]
-                if not re.search("На о_у='трени", corr_article):
-                    current_date=next(get_date) #we change the date only if it is next day
-                    #but morning readings are the same day, so we don't change the date
                 for pericope in re.finditer(is_pericope,corr_article):
                     article_dict[pericope.group(0)]=article_dict.get(pericope.group(0),[])+[corr_article]
                     

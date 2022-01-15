@@ -39,14 +39,14 @@ def test_iterate_year():
     current_date=next(get_date)
     assert current_date == easter #make sure about Easter evening
 
-    for i in range(48): #going to the Saturday before Pentecost
+    for i in range(48+6): #going to the Saturday before Pentecost plus Sundays have two readings
         current_date=next(get_date)
     assert current_date == datetime.date(2021,6,19)
 
     current_date = next(get_date)
     assert current_date == datetime.date(2021,6,19) #this day should have two readings
 
-    
+
 
     
 
